@@ -1,15 +1,9 @@
 package com.EcomApp.demo.model;
-
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
-
-
 @Data
 @Entity
 @AllArgsConstructor
@@ -19,10 +13,18 @@ public class Product {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id ;
     private String name ;
-    private String desc ;
+    private String description ;
     private String brand ;
-    private long price ;
+    private BigDecimal price ;
     private String category ;
+    //    @JsonFormat(shape = JsonFormat.Shape.STRING , pattern = "dd-MM-yyyy")
+    private Date releaseDate ;
+    private Boolean productAvailable ;
+    private int stockQuantity ;
+    private String imageName ;
+    private String imageType ;
+    @Lob
+    private byte[] imageData ;
 
     public int getId() {
         return id;
@@ -40,12 +42,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getBrand() {
@@ -56,11 +58,11 @@ public class Product {
         this.brand = brand;
     }
 
-    public long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -72,31 +74,51 @@ public class Product {
         this.category = category;
     }
 
-    public Date getReleasedate() {
-        return releasedate;
+    public Date getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setReleasedate(Date releasedate) {
-        this.releasedate = releasedate;
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public Boolean getAvailable() {
-        return available;
+    public Boolean getProductAvailable() {
+        return productAvailable;
     }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    public void setProductAvailable(Boolean productAvailable) {
+        this.productAvailable = productAvailable;
     }
 
-    public int getQty() {
-        return qty;
+    public int getStockQuantity() {
+        return stockQuantity;
     }
 
-    public void setQty(int qty) {
-        this.qty = qty;
+    public void setStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 
-    private Date releasedate ;
-    private Boolean available ;
-    private int qty ;
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
 }
